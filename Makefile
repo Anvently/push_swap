@@ -1,10 +1,12 @@
 NAME		=	push_swap
+BONUS_NAME	=	checker
 
 INCLUDES	=	includes/
 SRCS_FOLDER	=	sources/
 OBJS_FOLDER	=	objects/
 
-SRCS_FILES	=	main.c
+SRCS_FILES	=	error.c parse_input.c pile.c print.c swap.c rotate.c push.c \
+				solution.c
 
 OBJS		=	$(addprefix $(OBJS_FOLDER),$(SRCS_FILES:.c=.o))
 SRCS		=	$(addprefix $(SRCS_FOLDER),$(SRCS_FILES))
@@ -21,13 +23,17 @@ all: $(NAME)
 test: $(NAME)
 	./$(NAME)
 
-bonus: $(NAME)
-
-$(NAME): $(LIBFT) $(OBJS)
+$(NAME): $(LIBFT) $(OBJS) $(OBJS_FOLDER)main.o
 	@echo "\n-----COMPILING PUSH_SWAP-------\n"
-	$(CC) $(CFLAGS) $(OBJS) -Llibft/ -lft -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(OBJS_FOLDER)main.o -Llibft/ -lft -o $(NAME)
 	@echo "Executable has been successfully created."
 
+$(BONUS_NAME): $(LIBFT) $(OBJS) $(OBJS_FOLDER)checker.o
+	@echo "\n-----COMPILING CHECKER-------\n"
+	$(CC) $(CFLAGS) $(OBJS) $(OBJS_FOLDER)checker.o -Llibft/ -lft -o $(BONUS_NAME)
+	@echo "Executable has been successfully created."
+
+bonus: $(BONUS_NAME)
 
 $(OBJS_FOLDER)%.o: $(SRCS_FOLDER)%.c Makefile $(INCLUDES)libft.h $(INCLUDES)push_swap.h $(LIBFT)
 	mkdir -p $(dir $@)

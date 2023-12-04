@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npirard <npirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/01 18:10:20 by npirard           #+#    #+#             */
-/*   Updated: 2023/12/04 16:19:49 by npirard          ###   ########.fr       */
+/*   Created: 2023/12/04 13:08:14 by npirard           #+#    #+#             */
+/*   Updated: 2023/12/04 16:15:39 by npirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int	main(int narg, char **vargs)
+/// @brief Take src's top element and put it on top on dest.
+/// @param pile_src
+/// @param pile_dest
+void	do_push(t_pile **pile_src, t_pile **pile_dest)
 {
-	t_pile	*pile_a;
-	t_pile	*pile_b;
+	t_pile	*temp;
 
-	pile_a = parse_input(narg, vargs);
-	pile_b = NULL;
-	algo_sort(&pile_a, &pile_b);
-	pile_clear(pile_a);
-	pile_clear(pile_b);
-	return (0);
+	if (!*pile_src)
+		return ;
+	temp = (*pile_src)->prev;
+	(*pile_src)->prev = (*pile_dest);
+	*pile_dest = *pile_src;
+	*pile_src = temp;
 }

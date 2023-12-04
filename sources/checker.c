@@ -1,16 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npirard <npirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/01 18:10:20 by npirard           #+#    #+#             */
-/*   Updated: 2023/12/04 16:19:49 by npirard          ###   ########.fr       */
+/*   Created: 2023/12/04 15:42:43 by npirard           #+#    #+#             */
+/*   Updated: 2023/12/04 16:15:51 by npirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+
+void	listen_actions(t_pile **pile_a, t_pile **pile_b)
+{
+	char	*line;
+
+	line = ft_gnl(0);
+	while (line)
+	{
+		do_action(line, pile_a, pile_b);
+		free(line);
+		line = ft_gnl(0);
+	}
+	if (pile_is_sort(*pile_a))
+		ft_putendl_fd("OK", 1);
+	else
+		ft_putendl_fd("KO", 1);
+}
 
 int	main(int narg, char **vargs)
 {
@@ -19,7 +36,7 @@ int	main(int narg, char **vargs)
 
 	pile_a = parse_input(narg, vargs);
 	pile_b = NULL;
-	algo_sort(&pile_a, &pile_b);
+	listen_actions(&pile_a, &pile_b);
 	pile_clear(pile_a);
 	pile_clear(pile_b);
 	return (0);

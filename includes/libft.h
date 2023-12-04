@@ -6,7 +6,7 @@
 /*   By: npirard <npirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 09:23:38 by npirard           #+#    #+#             */
-/*   Updated: 2023/12/01 17:55:46 by npirard          ###   ########.fr       */
+/*   Updated: 2023/12/04 11:13:40 by npirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
+char	**ft_free_strings(char **strings);
 
 ///------------------------------ MEM --------------------------
 
@@ -88,6 +89,11 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+
+/* ---------------------------------- ERROR --------------------------------- */
+
+void	*alloc_error(void);
+void	*null_error(char *msg);
 
 /*--------------------------------------------------------------
 ---------------------------- BONUS -----------------------------
