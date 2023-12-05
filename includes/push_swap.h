@@ -6,7 +6,7 @@
 /*   By: npirard <npirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 18:10:36 by npirard           #+#    #+#             */
-/*   Updated: 2023/12/05 16:59:54 by npirard          ###   ########.fr       */
+/*   Updated: 2023/12/05 18:22:33 by npirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,14 @@ void	exec_rotate_to_b(char *action, t_pile **pile_from,
 			t_pile **pile_to, t_pile *cheapest);
 void	exec_rotate_to_a(char *action, t_pile **pile_a,
 			t_pile **pile_b, t_pile *cheapest);
+
+/* -------------------------------------------------------------------------- */
+/*                              COST_CALCULATION                              */
+/* -------------------------------------------------------------------------- */
+
 void	calc_costs(t_pile *pile_from, t_pile *pile_to);
 int		get_cost(t_pile *pile, int n);
+int		reverse_cost(int cost, int size);
 int		get_true_cost(t_pile *pile, int offset);
 int		calc_final_cost(int rotate_from, int rotate_to);
 void	optimize_cost(t_pile *node, int size_from, int size_to);

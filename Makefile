@@ -6,7 +6,7 @@ SRCS_FOLDER	=	sources/
 OBJS_FOLDER	=	objects/
 
 SRCS_FILES	=	error.c parse_input.c pile.c print.c swap.c rotate.c push.c \
-				solution.c cost.c pile_helpers.c
+				solution.c cost.c pile_helpers.c calcul.c action.c
 
 OBJS		=	$(addprefix $(OBJS_FOLDER),$(SRCS_FILES:.c=.o))
 SRCS		=	$(addprefix $(SRCS_FOLDER),$(SRCS_FILES))
@@ -21,7 +21,10 @@ CFLAGS		=	-Wall -Wextra -Werror -g3 -I$(INCLUDES)
 all: $(NAME)
 
 test: $(NAME)
-	./$(NAME)
+	ARG=`shuf -i 1-1000 -n 500 | tr "\n" " "`; ./$(NAME) $$ARG | wc -l
+
+test_checker: $(NAME) bonus
+	ARG=`shuf -i 1-1000 -n 500 | tr "\n" " "`; ./$(NAME) $$ARG | ./checker_linux $$ARG
 
 $(NAME): $(LIBFT) $(OBJS) $(OBJS_FOLDER)main.o
 	@echo "\n-----COMPILING PUSH_SWAP-------\n"
