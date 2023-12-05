@@ -6,7 +6,7 @@
 /*   By: npirard <npirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 15:42:43 by npirard           #+#    #+#             */
-/*   Updated: 2023/12/04 16:15:51 by npirard          ###   ########.fr       */
+/*   Updated: 2023/12/05 10:26:43 by npirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	listen_actions(t_pile **pile_a, t_pile **pile_b)
 	while (line)
 	{
 		do_action(line, pile_a, pile_b);
+		piles_print(*pile_a, *pile_b);
+		get_cost(*pile_b, (*pile_a)->n);
 		free(line);
 		line = ft_gnl(0);
 	}

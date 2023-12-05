@@ -6,7 +6,7 @@ SRCS_FOLDER	=	sources/
 OBJS_FOLDER	=	objects/
 
 SRCS_FILES	=	error.c parse_input.c pile.c print.c swap.c rotate.c push.c \
-				solution.c
+				solution.c cost.c pile_helpers.c
 
 OBJS		=	$(addprefix $(OBJS_FOLDER),$(SRCS_FILES:.c=.o))
 SRCS		=	$(addprefix $(SRCS_FOLDER),$(SRCS_FILES))

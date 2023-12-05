@@ -6,7 +6,7 @@
 /*   By: npirard <npirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 18:10:20 by npirard           #+#    #+#             */
-/*   Updated: 2023/12/04 16:19:49 by npirard          ###   ########.fr       */
+/*   Updated: 2023/12/05 12:15:27 by npirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int narg, char **vargs)
 
 	pile_a = parse_input(narg, vargs);
 	pile_b = NULL;
-	algo_sort(&pile_a, &pile_b);
+	sort_pile(&pile_a, &pile_b);
 	pile_clear(pile_a);
 	pile_clear(pile_b);
 	return (0);
