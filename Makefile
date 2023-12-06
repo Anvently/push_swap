@@ -24,7 +24,7 @@ test: $(NAME)
 	ARG=`shuf -i 1-1000 -n 500 | tr "\n" " "`; ./$(NAME) $$ARG | wc -l
 
 test_checker: $(NAME) bonus
-	ARG=`shuf -i 1-1000 -n 500 | tr "\n" " "`; ./$(NAME) $$ARG | ./checker_linux $$ARG
+	ARG=`shuf -i 1-1000 -n 500 | tr "\n" " "`; ./$(NAME) $$ARG | ./checker $$ARG
 
 $(NAME): $(LIBFT) $(OBJS) $(OBJS_FOLDER)main.o
 	@echo "\n-----COMPILING PUSH_SWAP-------\n"

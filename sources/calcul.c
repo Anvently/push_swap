@@ -6,7 +6,7 @@
 /*   By: npirard <npirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:17:28 by npirard           #+#    #+#             */
-/*   Updated: 2023/12/05 18:18:22 by npirard          ###   ########.fr       */
+/*   Updated: 2023/12/06 11:06:54 by npirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,17 @@ int	get_true_cost(t_pile *pile, int offset)
 
 /// @brief Calculate the actual number of rotation for a node
 /// (including double rotation if cost have the same sign.)
-/// @param rotate_from
-/// @param rotate_to
+/// @param rotate_a
+/// @param rotate_b
 /// @return
-int	calc_final_cost(int rotate_from, int rotate_to)
+int	calc_final_cost(int rotate_a, int rotate_b, int swap_a)
 {
 	int	cost;
 
-	if ((rotate_from < 0) == (rotate_to < 0))
-		cost = ft_max(ft_abs(rotate_from), ft_abs(rotate_to));
+	if ((rotate_a < 0) == (rotate_b < 0))
+		cost = ft_max(ft_abs(rotate_a), ft_abs(rotate_b)) + swap_a;
 	else
-		cost = ft_abs(rotate_from) + ft_abs(rotate_to);
+		cost = ft_abs(rotate_a) + ft_abs(rotate_b) + swap_a;
 	return (cost);
 }
 
@@ -62,19 +62,19 @@ void	optimize_cost(t_pile *node, int size_from, int size_to)
 	int	cost_rev_from;
 	int	cost_rev_to;
 
-	cost_rev_from = calc_final_cost(reverse_cost(node->rotate_from, size_from),
-			node->rotate_to);
-	cost_rev_to = calc_final_cost(node->rotate_from,
-			reverse_cost(node->rotate_to, size_to));
-	node->cost = calc_final_cost(node->rotate_from, node->rotate_to);
+	cost_rev_from = calc_final_cost(reverse_cost(node->rotate_a, size_from),
+			node->rotate_b, node->swap_a);
+	cost_rev_to = calc_final_cost(node->rotate_a,
+			reverse_cost(node->rotate_b, size_to), node->swap_a);
+	node->cost = calc_final_cost(node->rotate_a, node->rotate_b, node->swap_a);
 	if (cost_rev_from < node->cost)
 	{
-		node->rotate_from = reverse_cost(node->rotate_from, size_from);
+		node->rotate_a = reverse_cost(node->rotate_a, size_from);
 		node->cost = cost_rev_from;
 	}
 	if (cost_rev_to < node->cost)
 	{
-		node->rotate_to = reverse_cost(node->rotate_to, size_to);
+		node->rotate_b = reverse_cost(node->rotate_b, size_to);
 		node->cost = cost_rev_to;
 	}
 }

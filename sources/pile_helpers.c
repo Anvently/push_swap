@@ -6,7 +6,7 @@
 /*   By: npirard <npirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:27:54 by npirard           #+#    #+#             */
-/*   Updated: 2023/12/05 14:34:56 by npirard          ###   ########.fr       */
+/*   Updated: 2023/12/06 16:20:27 by npirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ bool	pile_is_sort(t_pile *pile)
 	return (true);
 }
 
-/// @brief Assign the maximum number of the pile to ```max``` and return
-/// it index.
+/// @brief Return index of maximum node in the list
 /// @param pile
 /// @param n
 /// @return ```-1``` if pile is empty.
@@ -62,28 +61,27 @@ int	pile_max_offset(t_pile *pile)
 	return (i_max);
 }
 
-/// @brief Return offset of closest smaller number of n in pile.
+/// @brief Return the index of minimum node in the list
 /// @param pile
 /// @param n
-/// @return ```-1``` if pile is empty or no index found.
-int	pile_closest_offset(t_pile *pile, int n)
+/// @return ```-1``` if pile is empty.
+int	pile_min_offset(t_pile *pile)
 {
+	int	i_min;
+	int	min;
 	int	i;
-	int	i_closest;
-	int	diff;
 
+	i_min = -1;
 	i = 0;
-	i_closest = -1;
-	diff = 0;
 	while (pile)
 	{
-		if (pile->n < n && (i_closest < 0 || n - pile->n < diff))
+		if (i_min < 0 || pile->n < min)
 		{
-			i_closest = i;
-			diff = n - pile->n;
+			min = pile->n;
+			i_min = i;
 		}
 		i++;
 		pile = pile->prev;
 	}
-	return (i_closest);
+	return (i_min);
 }

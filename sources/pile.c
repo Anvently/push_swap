@@ -6,7 +6,7 @@
 /*   By: npirard <npirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 10:49:20 by npirard           #+#    #+#             */
-/*   Updated: 2023/12/05 11:59:41 by npirard          ###   ########.fr       */
+/*   Updated: 2023/12/06 17:20:10 by npirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ t_pile	*pile_new(int n)
 		return (alloc_error());
 	node->prev = NULL;
 	node->n = n;
-	node->rotate_from = 0;
-	node->rotate_to = 0;
+	node->rotate_a = 0;
+	node->rotate_b = 0;
+	node->swap_a = 0;
+	node->cost = 0;
 	return (node);
 }
 

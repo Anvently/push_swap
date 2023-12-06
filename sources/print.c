@@ -6,7 +6,7 @@
 /*   By: npirard <npirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 11:17:25 by npirard           #+#    #+#             */
-/*   Updated: 2023/12/05 12:55:04 by npirard          ###   ########.fr       */
+/*   Updated: 2023/12/06 16:18:18 by npirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	pile_print(t_pile *pile)
 {
 	while (pile)
 	{
-		ft_printf("---- %+3d | r_from = %d | r_to = %d ---\n"
-			, pile->n, pile->rotate_from, pile->rotate_to);
+		ft_printf("---- %+3d | r_from = %d | r_to = %d ---\n",
+			pile->n, pile->rotate_a, pile->rotate_b);
 		pile = pile->prev;
 	}
 }

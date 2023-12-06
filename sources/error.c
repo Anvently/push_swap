@@ -6,7 +6,7 @@
 /*   By: npirard <npirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 09:25:22 by npirard           #+#    #+#             */
-/*   Updated: 2023/12/05 14:21:37 by npirard          ###   ########.fr       */
+/*   Updated: 2023/12/06 18:55:22 by npirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,36 +21,34 @@ bool	error_input(int error)
 		ft_putendl_fd("incorrect number format.", 2);
 	else if (error == 3)
 		ft_putendl_fd("number already in pile.", 2);
+	else if (error == 4)
+		ft_putendl_fd("number cannot be contained within an int.", 2);
 	return (false);
 }
 
-bool	check_input_str(char *str)
+/* bool	error_input(int error)
 {
-	int	i;
+	if (error != 1)
+		ft_putendl_fd("Error.", 2);
+	return (false);
+} */
 
-	i = 0;
-	if ((str[i] == '+' || str[i] == '-') && str[i + 1])
-		i++;
-	while (str[i])
-		if (!ft_isdigit(str[i++]))
-			return (error_input(2));
-	return (true);
+void	free_and_exit(t_pile *pile, char **strs, int error)
+{
+	if (strs)
+		ft_free_strings(strs);
+	pile_clear(pile);
+	if (error == -1)
+		alloc_error();
+	else if (error > 0)
+		error_input(error);
+	exit(error);
 }
 
-bool	check_narg(int narg)
+void	free_piles(t_pile **pile_a, t_pile **pile_b)
 {
-	if (narg <= 1)
-		return (error_input(1));
-	return (true);
-}
-
-bool	check_double(t_pile *pile, int n)
-{
-	while (pile)
-	{
-		if (pile->n == n)
-			return (error_input(3));
-		pile = pile->prev;
-	}
-	return (true);
+	pile_clear(*pile_a);
+	pile_clear(*pile_b);
+	*pile_a = NULL;
+	*pile_b = NULL;
 }

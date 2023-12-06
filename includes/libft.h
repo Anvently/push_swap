@@ -6,7 +6,7 @@
 /*   By: npirard <npirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 09:23:38 by npirard           #+#    #+#             */
-/*   Updated: 2023/12/05 17:29:58 by npirard          ###   ########.fr       */
+/*   Updated: 2023/12/06 18:35:38 by npirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 ///---------------------- TYPE CONVERSION -----------------------
 
 int		ft_atoi(const char *nptr);
+int		ft_atol(const char *nptr);
+int		ft_strtoi(const char *str, int *dest);
 char	*ft_itoa(int n);
 char	*ft_uitoa(unsigned int n);
 char	*ft_ultoa(unsigned long n);
