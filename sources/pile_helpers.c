@@ -6,12 +6,15 @@
 /*   By: npirard <npirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:27:54 by npirard           #+#    #+#             */
-/*   Updated: 2023/12/06 16:20:27 by npirard          ###   ########.fr       */
+/*   Updated: 2023/12/07 09:54:44 by npirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
+/// @brief Return pile size
+/// @param pile
+/// @return
 int	pile_size(t_pile *pile)
 {
 	int	i;
@@ -25,6 +28,9 @@ int	pile_size(t_pile *pile)
 	return (i);
 }
 
+/// @brief Check if a pile is sorted in ascending order.
+/// @param pile
+/// @return ```true``` if pile is sorted, else ```false```.
 bool	pile_is_sort(t_pile *pile)
 {
 	while (pile)

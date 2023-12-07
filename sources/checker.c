@@ -6,12 +6,15 @@
 /*   By: npirard <npirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 15:42:43 by npirard           #+#    #+#             */
-/*   Updated: 2023/12/06 17:18:14 by npirard          ###   ########.fr       */
+/*   Updated: 2023/12/07 10:01:03 by npirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
+/// @brief Check if given action is valid.
+/// @param action
+/// @return ```true``` if valid else ```false```.
 static bool	check_action(char *action)
 {
 	if (!ft_strcmp(action, "sa\n")
@@ -26,10 +29,13 @@ static bool	check_action(char *action)
 		|| !ft_strcmp(action, "rrb\n")
 		|| !ft_strcmp(action, "rrr\n"))
 		return (true);
-	ft_putendl_fd("Unknowm action.", 1);
 	return (false);
 }
 
+/// @brief Listen for action on ```stdin``` and execute them. Any
+/// invalid action will stop program execution.
+/// @param pile_a
+/// @param pile_b
 void	listen_actions(t_pile **pile_a, t_pile **pile_b)
 {
 	char	*line;
@@ -37,8 +43,13 @@ void	listen_actions(t_pile **pile_a, t_pile **pile_b)
 	line = ft_gnl(0);
 	while (line)
 	{
-		if (check_action(line))
-			do_action(line, pile_a, pile_b, false);
+		if (!check_action(line))
+		{
+			free(line);
+			free_piles(pile_a, pile_b);
+			free_and_exit(NULL, NULL, 5);
+		}
+		do_action(line, pile_a, pile_b, false);
 		free(line);
 		line = ft_gnl(0);
 	}

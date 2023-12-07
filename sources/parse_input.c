@@ -6,13 +6,16 @@
 /*   By: npirard <npirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 09:24:57 by npirard           #+#    #+#             */
-/*   Updated: 2023/12/06 18:48:43 by npirard          ###   ########.fr       */
+/*   Updated: 2023/12/07 09:57:06 by npirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 #include <limits.h>
 
+/// @brief Check if given str have a valid number format.
+/// @param str
+/// @return
 bool	check_input_str(char *str)
 {
 	int	i;
@@ -26,6 +29,10 @@ bool	check_input_str(char *str)
 	return (true);
 }
 
+/// @brief Check if given number is already contained in the pile.
+/// @param pile
+/// @param n
+/// @return
 bool	check_double(t_pile *pile, int n)
 {
 	while (pile)
@@ -37,7 +44,7 @@ bool	check_double(t_pile *pile, int n)
 	return (true);
 }
 
-/// @brief Return a list containing all given numbers if valid. Numbers can be
+/// @brief Return a pile containing all given numbers if valid. Numbers can be
 /// given as a succesion of strings or contained within in a stirng and
 /// separated with spaces. Both presentation format can occur at the same time.
 /// @param narg Number of string given as input
@@ -60,12 +67,13 @@ t_pile	*parse_input(int narg, char **vargs)
 	return (pile_a);
 }
 
-/// @brief Add given numbers to the list.
+/// @brief Add given numbers to the pile.
 /// @param str string containing 1 or more numbers separated with spaces.
-/// @return List or ```NULL``` if format or allocation error.
+/// @return Pile. Allocation or input error are handled. No need to check for
+/// ```NULL```.
 t_pile	*parse_arg(t_pile *pile_a, char *str)
 {
-	int	n;
+	int		n;
 	int		i;
 	char	**strs;
 
@@ -75,13 +83,13 @@ t_pile	*parse_arg(t_pile *pile_a, char *str)
 	i = 0;
 	while (strs[i])
 	{
-		if (ft_strtoi(strs[i], &n))
-			free_and_exit(pile_a, strs, 4);
 		if (!check_input_str(strs[i]))
 			free_and_exit(pile_a, strs, 2);
+		if (ft_strtoi(strs[i], &n))
+			free_and_exit(pile_a, strs, 4);
 		if (!check_double(pile_a, n))
 			free_and_exit(pile_a, strs, 3);
-		pile_a = pile_add_back(pile_a, pile_new( n));
+		pile_a = pile_add_back(pile_a, pile_new(n));
 		if (!pile_a)
 			free_and_exit(pile_a, strs, -1);
 		i++;

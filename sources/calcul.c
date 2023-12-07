@@ -6,12 +6,16 @@
 /*   By: npirard <npirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:17:28 by npirard           #+#    #+#             */
-/*   Updated: 2023/12/06 11:06:54 by npirard          ###   ########.fr       */
+/*   Updated: 2023/12/07 10:01:49 by npirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
+/// @brief Return given rotate cost in the opposite action's cost.
+/// @param cost
+/// @param size
+/// @return
 int	reverse_cost(int cost, int size)
 {
 	if (cost >= 0)

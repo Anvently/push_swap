@@ -6,12 +6,17 @@
 /*   By: npirard <npirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:15:36 by npirard           #+#    #+#             */
-/*   Updated: 2023/12/06 17:18:19 by npirard          ###   ########.fr       */
+/*   Updated: 2023/12/07 10:05:56 by npirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
+/// @brief Execute a given action. Invalid action are ignored.
+/// @param action String containing the action, MUST end with a \\n.
+/// @param pile_a
+/// @param pile_b
+/// @param print Set if the action has to be printed or not.
 void	do_action(char *action, t_pile **pile_a, t_pile **pile_b, bool print)
 {
 	if (!ft_strcmp(action, "sa\n"))
@@ -40,6 +45,10 @@ void	do_action(char *action, t_pile **pile_a, t_pile **pile_b, bool print)
 		ft_printf("%s", action);
 }
 
+/// @brief Execute the cheapest move in both pile.
+/// @param pile_a
+/// @param pile_b
+/// @param cheapest
 void	rotate_piles(t_pile **pile_a, t_pile **pile_b, t_pile *cheapest)
 {
 	if (cheapest->swap_a)
@@ -58,6 +67,12 @@ void	rotate_piles(t_pile **pile_a, t_pile **pile_b, t_pile *cheapest)
 		exec_rotate("rrb\n", pile_a, pile_b, cheapest);
 }
 
+/// @brief Call ```do_action``` for given action and updated accordingly
+/// number of remaining move in cheapest.
+/// @param action
+/// @param pile_a
+/// @param pile_b
+/// @param cheapest
 void	exec_rotate(char *action, t_pile **pile_a,
 		t_pile **pile_b, t_pile *cheapest)
 {

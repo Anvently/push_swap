@@ -6,13 +6,13 @@
 /*   By: npirard <npirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 09:25:22 by npirard           #+#    #+#             */
-/*   Updated: 2023/12/06 18:55:22 by npirard          ###   ########.fr       */
+/*   Updated: 2023/12/07 09:37:36 by npirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-bool	error_input(int error)
+/* bool	error_input(int error)
 {
 	ft_putstr_fd("Error when parsing the input : ", 2);
 	if (error == 1)
@@ -23,15 +23,17 @@ bool	error_input(int error)
 		ft_putendl_fd("number already in pile.", 2);
 	else if (error == 4)
 		ft_putendl_fd("number cannot be contained within an int.", 2);
+	else if (error == 5)
+		ft_putendl_fd("unknown action.", 2);
 	return (false);
-}
+} */
 
-/* bool	error_input(int error)
+bool	error_input(int error)
 {
 	if (error != 1)
 		ft_putendl_fd("Error.", 2);
 	return (false);
-} */
+}
 
 void	free_and_exit(t_pile *pile, char **strs, int error)
 {

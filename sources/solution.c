@@ -6,12 +6,15 @@
 /*   By: npirard <npirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 14:54:22 by npirard           #+#    #+#             */
-/*   Updated: 2023/12/06 17:43:00 by npirard          ###   ########.fr       */
+/*   Updated: 2023/12/07 09:53:14 by npirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
+/// @brief Check if a swap in pile_a is required and perform it. Special case
+///  where only 3 numbers remain.
+/// @param pile
 void	check_swap(t_pile **pile)
 {
 	int		min_offset;
@@ -27,8 +30,10 @@ void	check_swap(t_pile **pile)
 		do_action("sa\n", pile, NULL, true);
 }
 
-/// @brief Do a swap in a if required.
-/// @param pile
+/// @brief Sort a in ascending order and b in descending order. Pile b has to be
+/// already sorted, sort_piles only put max of pile_b on top of the pile.
+/// @param pile_a
+/// @param pile_b
 void	sort_piles(t_pile **pile_a, t_pile **pile_b)
 {
 	t_pile	*cheapest;
@@ -51,6 +56,10 @@ void	sort_piles(t_pile **pile_a, t_pile **pile_b)
 	pile_clear(cheapest);
 }
 
+/// @brief Put all the number of pile_b on top of pile_a, reverse rotating a
+/// if necessary. Both pile have to be sorted first.
+/// @param pile_a
+/// @param pile_b
 void	final_sort(t_pile **pile_a, t_pile **pile_b)
 {
 	while (*pile_b)
@@ -63,6 +72,11 @@ void	final_sort(t_pile **pile_a, t_pile **pile_b)
 	}
 }
 
+/// @brief Sort the piles. push every number of a (except 3) in b, sorting
+/// them in descending order. Then push them back to a, and rotate a
+/// if necessary.
+/// @param pile_a
+/// @param pile_b
 void	sort_pile(t_pile **pile_a, t_pile **pile_b)
 {
 	t_pile	*cheapest;

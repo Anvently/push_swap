@@ -6,7 +6,7 @@
 /*   By: npirard <npirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 13:09:20 by npirard           #+#    #+#             */
-/*   Updated: 2023/12/04 14:27:10 by npirard          ###   ########.fr       */
+/*   Updated: 2023/12/07 09:43:26 by npirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	do_rotate(t_pile **pile)
 {
 	t_pile	*temp;
 
+	if (!*pile)
+		return ;
 	temp = (*pile)->prev;
 	pile_last(*pile)->prev = *pile;
 	(*pile)->prev = NULL;
@@ -41,6 +43,8 @@ void	do_rev_rotate(t_pile **pile)
 {
 	t_pile	*penultimate;
 
+	if (!*pile)
+		return ;
 	penultimate = pile_before_last(*pile);
 	if (!penultimate || !penultimate->prev)
 		return ;

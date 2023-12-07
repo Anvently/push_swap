@@ -6,7 +6,7 @@
 /*   By: npirard <npirard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 18:04:29 by npirard           #+#    #+#             */
-/*   Updated: 2023/12/06 16:19:25 by npirard          ###   ########.fr       */
+/*   Updated: 2023/12/07 09:59:44 by npirard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,12 @@ void	calc_costs(t_pile *pile_from, t_pile *pile_to)
 	}
 }
 
+/// @brief Return a pointer to the cheapest node of the pile, meaning the node
+/// which can be push in sorted ```pile_to``` with the smaller count of action.
+/// Type and number of actions are updated in node attributes.
+/// @param pile_from
+/// @param pile_to
+/// @return
 t_pile	*find_cheapest(t_pile **pile_from, t_pile **pile_to)
 {
 	t_pile	*cheapest;
