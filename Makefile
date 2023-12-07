@@ -62,7 +62,7 @@ clean:
 fclean: clean
 	@echo "\n-------------FORCE CLEAN--------------\n"
 	make fclean -C libft/
-	rm -f $(NAME)
+	rm -f $(NAME) $(BONUS_NAME)
 	@echo "$(NAME) and object files have been removed."
 
 re: fclean all
